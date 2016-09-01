@@ -1,0 +1,96 @@
+package za.ac.cput.jayson.domain.customer;
+
+import javax.persistence.Embeddable;
+import java.io.Serializable;
+
+/**
+ * Created by JAYSON on 2016-08-18.
+ */
+
+@Embeddable
+public class CustomerAddress implements Serializable {
+
+    private String cityName;
+    private String areaName;
+    private String areaCode;
+
+    public CustomerAddress(){}
+
+    public String getCityName()
+    {
+        return cityName;
+    }
+
+    public String getAreaName()
+    {
+        return areaName;
+    }
+
+    public String getAreaCode()
+    {
+        return areaCode;
+    }
+
+    public CustomerAddress(Builder builder)
+    {
+        this.cityName = builder.cityName;
+        this.areaName = builder.areaName;
+        this.areaCode = builder.areaCode;
+    }
+
+    public static class Builder
+    {
+        private String cityName;
+        private String areaName;
+        private String areaCode;
+
+        public Builder cityName(String value)
+        {
+            this.cityName = value;
+            return this;
+        }
+
+        public Builder areaName(String value)
+        {
+            this.areaName = value;
+            return this;
+        }
+
+        public Builder areaCode(String value)
+        {
+            this.areaCode = value;
+            return this;
+        }
+
+        public Builder copy(CustomerAddress value)
+        {
+            this.cityName = value.cityName;
+            this.areaName = value.areaName;
+            this.areaCode = value.areaCode;
+
+            return this;
+        }
+
+        public CustomerAddress build()
+        {
+            return new CustomerAddress(this);
+        }
+    }
+
+    /*@Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        CustomerAddress customerAddress = (CustomerAddress) o;
+
+        return id != null ? id.equals(customerAddress.id) : customerAddress.id == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
+    }*/
+}
+
